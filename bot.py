@@ -18,8 +18,6 @@ def hello(message):
 		no_key = types.InlineKeyboardButton(text = "Не-а", callback_data = "no")
 		keyboard1.add(yes_key, no_key)
 		bot.send_message(message.from_user.id, "Хочешь пройти квест?", reply_markup = keyboard1)
-	elif i == 0:
-		bot.send_message(message.from_user.id, "Я не понимать ;(")
 	for word in words["hello"]:
 		if message.text.lower() == word:
 			i = 1
@@ -40,6 +38,8 @@ def hello(message):
 	if message.text.lower() == "жизнь":
 			i = 1
 			bot.send_message(message.from_user.id, "- боль")
+	elif i == 0:
+		bot.send_message(message.from_user.id, "Я не понимать ;(")
 @bot.callback_query_handler(func= lambda call: True)
 def callback_worker(call):
 	if call.data == "yes":
